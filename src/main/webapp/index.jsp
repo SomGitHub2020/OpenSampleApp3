@@ -10,8 +10,8 @@
 
     <div align="center" style="margin-top: 50px;">
  
-        <form>
-            Please Enter Username:  <input type="text" name="username" size="20px"> <br>
+        <form action="LoginServlet">
+            Please Enter User ID:  <input type="text" name="username" size="20px"> <br>
             Please Enter Password:  <input type="text" name="password" size="20px"> <br><br>
         <input type="submit" value="submit">
         </form>
