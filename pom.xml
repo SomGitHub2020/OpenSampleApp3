@@ -54,6 +54,7 @@
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                     <outputDirectory>target</outputDirectory>
               		  <warName>ROOT</warName>
+              		  <webappDirectory>src/main/webapp</webappDirectory>
                 </configuration>
             </plugin>
         </plugins>
