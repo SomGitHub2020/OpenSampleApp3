@@ -11,8 +11,8 @@
     <div align="center" style="margin-top: 50px;">
  
         <form>
-            Enter Username:  <input type="text" name="username" size="20px"> <br>
-            Enter Password:  <input type="text" name="password" size="20px"> <br><br>
+            Please Enter Username:  <input type="text" name="username" size="20px"> <br>
+            Please Enter Password:  <input type="text" name="password" size="20px"> <br><br>
         <input type="submit" value="submit">
         </form>
  
