@@ -39,13 +39,6 @@
     		<artifactId>mssql-jdbc</artifactId>
     		<version>6.4.0.jre8</version>
 		</dependency>
-		<dependency>
-			<groupId>dbconn</groupId>
-			<artifactId>dbconn</artifactId>
-			<scope>system</scope>
-			<version>1.0</version>
-			<systemPath>${basedir}\src\main\webapp\WEB-INF\lib\dbconn.jar</systemPath>
-		</dependency>
 	</dependencies>
 
 <profiles>
