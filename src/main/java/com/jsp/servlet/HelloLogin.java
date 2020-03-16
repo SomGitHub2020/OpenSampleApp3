@@ -56,8 +56,6 @@ public class HelloLogin extends HttpServlet {
                       "<style= \"font-size=\"12px\" color='black'\"" + "\">" +
                         "Hello " + username + ", Welcome! But we've noted your password: " + password + 
                         " <br> <br>" +
-                        "Now, go and please submit the goals for 2020!" +
-                        " <br> <br>" +
                         " MS SQL DB is connected: " + returnMsg +
                     "</font></body> \n" +
                   "</html>" 
