@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/*import mssqlServerConn.MSSQLServerConn;*/
+import mssqlServerConn.MSSQLServerConn;
 
 /**
  * Servlet implementation class HelloLogin
@@ -31,8 +31,9 @@ public class HelloLogin extends HttpServlet {
         String password = request.getParameter("password");
        
 		
-       // MSSQLServerConn msserverCon = new MSSQLServerConn();
-       //String returnMsg = msserverCon.dbConn(username,password);
+        MSSQLServerConn msserverCon = new MSSQLServerConn();
+        String returnMsg = msserverCon.dbConn(username,password);
+        
        //System.out.println("DB Conn is made with: "+returnMsg);
        //response.sendRedirect("/SAPUI5/index.html?U="+username+" "+password);  
        
@@ -56,6 +57,8 @@ public class HelloLogin extends HttpServlet {
                         "Hello " + username + ", Welcome! But we've noted your password: " + password + 
                         " <br> <br>" +
                         "Now, go and please submit the goals for 2020!" +
+                        " <br> <br>" +
+                        " MS SQL DB is connected: " + returnMsg +
                     "</font></body> \n" +
                   "</html>" 
                 );      
