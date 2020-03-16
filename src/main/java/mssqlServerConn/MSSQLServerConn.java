@@ -28,14 +28,17 @@ public class MSSQLServerConn {
 	{
 	String returnMsg = "" ;
 		System.out.println("Program started");
+		returnMsg = returnMsg + "Program started"+ "/n";
 	    try
 	    {
 	       Class.forName(jdbcDriver).newInstance();
 	       System.out.println("JDBC driver loaded successfully 1!");
+	       returnMsg = returnMsg + "JDBC driver loaded successfully 1!"+ "/n";
 	    }
 	    catch (Exception err)
 	    {
 	       System.err.println("Error loading JDBC driver");
+	       returnMsg = returnMsg + "Error loading JDBC driver"+ "/n";
 	       err.printStackTrace(System.err);
 	       System.exit(0);
 	    }
@@ -47,6 +50,7 @@ public class MSSQLServerConn {
 	      databaseConnection = DriverManager.getConnection(dbURL,userName,Password);
 	      System.out.println("Connected to the database successfully 2!");
 	      System.out.println("Closing database connection");
+	      returnMsg = returnMsg + "Error loading JDBC driver"+ "/n" + "Closing database connection";
 
 	      //close the database connection
 	      databaseConnection.close();
@@ -54,7 +58,7 @@ public class MSSQLServerConn {
 	    catch (SQLException err)
 	    {
 	       System.err.println("Error connecting to the database");
-	       returnMsg = "ERROR";
+	       returnMsg = "ERROR - " + returnMsg + "Error connecting to the database" + "/n";
 	       err.printStackTrace(System.err);
 	       return returnMsg;
 	      // System.exit(0);
