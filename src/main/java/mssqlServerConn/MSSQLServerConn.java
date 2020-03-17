@@ -8,9 +8,9 @@ public class MSSQLServerConn {
 
 	private static final String jdbcDriver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
 	
-	//private static final String jdbcURL = "jdbc:sqlserver://DESKTOP-L986EBS\\SQLFULL:1433;databasename=SOMDB;";
-	//private static final String jdbcURL = "jdbc:sqlserver://localhost\\MSSQLSERVER;databasename=SOMDB;";
-	private static final String dbURL = "jdbc:sqlserver://localhost:1433;databasename=SOMDB";
+	//private static final String dbURL = "jdbc:sqlserver://localhost:1433;databasename=SOMDB";
+	private static final String dbURL = "jdbc:sqlserver://192.168.1.102:1433;databasename=SOMDB";
+	
 	
 	private static final String user = "som_sa"; 
 	private static final String pass = "password@12345";
@@ -32,8 +32,8 @@ public class MSSQLServerConn {
 	    try
 	    {
 	       Class.forName(jdbcDriver).newInstance();
-	       System.out.println("JDBC driver loaded successfully 1!");
-	       returnMsg = returnMsg + "JDBC driver loaded successfully 1!"+ "/n";
+	       System.out.println("JDBC driver loaded successfully 2!");
+	       returnMsg = returnMsg + "JDBC driver loaded successfully!"+ "/n";
 	    }
 	    catch (Exception err)
 	    {
@@ -57,7 +57,7 @@ public class MSSQLServerConn {
 	    }
 	    catch (SQLException err)
 	    {
-	       System.err.println("Error connecting to the database");
+	       System.err.println("Error connecting to the database 1!");
 	       returnMsg = "ERROR - " + returnMsg + "Error connecting to the database" + "/n";
 	       err.printStackTrace(System.err);
 	       return returnMsg;
