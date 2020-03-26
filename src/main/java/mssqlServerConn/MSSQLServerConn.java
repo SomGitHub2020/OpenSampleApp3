@@ -3,6 +3,7 @@ package mssqlServerConn;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class MSSQLServerConn {
 
@@ -15,15 +16,52 @@ public class MSSQLServerConn {
 	private static final String user = "som_sa"; 
 	private static final String pass = "password@12345";
 	
+	private static final String dbURLwithUserPswd = dbURL + ";user=" + user + ";password=" + pass;
+	
+	private static final String ID = "X";
+	private static final String FName = "A";
+	private static final String LName = "B";
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
 		System.out.println("Program started");
 		MSSQLServerConn msserverCon = new MSSQLServerConn();
 		msserverCon.dbConn(user, pass);
-
+		msserverCon.insertNewEmp(ID,FName,LName);
 	}
 
+	public String insertNewEmp(String id2, String fname2, String lname2) {
+		String returnMsg = "" ;
+		
+	    try
+	    {
+	       
+
+	       Connection databaseConnection= null;
+
+	      //Connect to the database
+	      databaseConnection = DriverManager.getConnection(dbURLwithUserPswd);
+	      
+	      Statement stmt = databaseConnection.createStatement();
+ 
+	      insertTable(stmt,id2, fname2, lname2);
+	      
+	      System.out.println("Closing database connection");
+	    }
+	    catch (SQLException err)
+	    {
+	       System.err.println("Error connecting to the database");
+	       returnMsg = "ERROR";
+	       err.printStackTrace(System.err);
+	       return returnMsg;
+	      // System.exit(0);
+	    }
+	    returnMsg = "SUCCESS";
+	    System.out.println("Program finished");
+	    return returnMsg;
+	}
+	
 	public String dbConn(String userName, String Password)
 	{
 	String returnMsg = "" ;
@@ -68,4 +106,12 @@ public class MSSQLServerConn {
 	    return returnMsg;
 	}
 	
+	private void insertTable(Statement stmt, String idIn, String fnameIn, String lnameIn) throws SQLException{
+		
+		String sql = "INSERT Employee VALUES ('"+idIn+"','"+fnameIn+" "+lnameIn+"','"+fnameIn+"','"+lnameIn+"')";
+		
+		stmt.execute(sql);
+		
+		System.out.println("A new record is recorded successfully!");
+	}
 }

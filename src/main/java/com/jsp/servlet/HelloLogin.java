@@ -36,12 +36,14 @@ public class HelloLogin extends HttpServlet {
         
        //System.out.println("DB Conn is made with: "+returnMsg);
        //response.sendRedirect("/SAPUI5/index.html?U="+username+" "+password);  
+        
+        response.sendRedirect(request.getContextPath() + "/Welcome.jsp"); 
        
         /*
         PrintWriter out = response.getWriter();
         out.println(request.getContextPath());
         */
-               
+        /*       
         PrintWriter out = response.getWriter();
         out.println (
                   "<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" +" +
@@ -60,7 +62,7 @@ public class HelloLogin extends HttpServlet {
                     "</font></body> \n" +
                   "</html>" 
                 );      
-
+		*/
         
         
 	}
