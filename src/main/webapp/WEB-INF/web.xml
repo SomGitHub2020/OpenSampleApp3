@@ -9,7 +9,8 @@
   	</welcome-file-list>
   <servlet>
         <servlet-name>Som1</servlet-name>
-        <servlet-class>com.jsp.servlet.HelloLogin</servlet-class>
+        <!-- <servlet-class>com.jsp.servlet.HelloLogin</servlet-class> --> 
+        <servlet-class>com.jsp.servlet.GetMIISchedulerDetails</servlet-class>
          <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
@@ -22,10 +23,12 @@
     <servlet-class>com.jsp.servlet.DisplayEmployee</servlet-class>
     <load-on-startup>2</load-on-startup>
   </servlet>
+
   <servlet-mapping>
     <servlet-name>Som2</servlet-name>
     <url-pattern>/EmployeeServlet</url-pattern>
   </servlet-mapping>
+
 </web-app>
 
   

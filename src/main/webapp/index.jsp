@@ -11,11 +11,16 @@
     <div align="center" style="margin-top: 50px;">
  
         <form action="LoginServlet">
-           <font color="#ffffff"> Please Enter User ID: </font> 
-           <input type="text" name="username" size="20px"> <br>
-           <font color="#ffffff"> Please Enter Password:</font> 
-           <input type="text" name="password" size="20px"> <br><br>
-			<input type="submit" value="Connect">
+           <font color="#ffffff"> Please Enter Server IP: </font> 
+           <input type="text" name="IP" size="20px"> <br>
+           <font color="#ffffff"> Please Enter Server Port:</font> 
+           <input type="text" name="PORT" size="20px"> <br>
+             <font color="#ffffff"> Please Enter Admin: </font> 
+           <input type="text" name="ADMIN" size="20px"> <br>
+             <font color="#ffffff"> Please Enter Password: </font> 
+           <input type="text" name="PASSWORD" size="20px"> <br>
+           <br>
+			<input type="submit" value="Configure">
         </form>
  
     </div>

@@ -22,6 +22,11 @@ public class MSSQLServerConn {
 	private static final String FName = "A";
 	private static final String LName = "B";
 	
+	private static final String SchID = "X";
+	private static final String SchName = "A";
+	private static final String BLSPath = "B";
+	private static final String Pattern = "X";
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
@@ -29,7 +34,41 @@ public class MSSQLServerConn {
 		MSSQLServerConn msserverCon = new MSSQLServerConn();
 		msserverCon.dbConn(user, pass);
 		msserverCon.insertNewEmp(ID,FName,LName);
+		msserverCon.insertMIISchData(SchID,SchName,BLSPath,Pattern);
 	}
+
+	public String insertMIISchData(String schid2, String schname2, String blspath2, String pattern2) {
+		String returnMsg = "" ;
+		
+	    try
+	    {
+	    	Connection databaseConnection= null;
+
+	      //Connect to the database
+	      databaseConnection = DriverManager.getConnection(dbURLwithUserPswd);
+	      
+	      Statement stmt = databaseConnection.createStatement();
+ 
+	      insertTableMIISch(stmt,schid2, schname2, blspath2, pattern2);
+	      
+	      System.out.println("Closing database connection");
+	    }
+	    catch (SQLException err)
+	    {
+	       System.err.println("Error connecting to the database");
+	       returnMsg = "ERROR";
+	       err.printStackTrace(System.err);
+	       return returnMsg;
+	      // System.exit(0);
+	    }
+	    returnMsg = "SUCCESS";
+	    System.out.println("Program finished");
+	    return returnMsg;
+
+		
+	}
+
+
 
 	public String insertNewEmp(String id2, String fname2, String lname2) {
 		String returnMsg = "" ;
@@ -113,5 +152,15 @@ public class MSSQLServerConn {
 		stmt.execute(sql);
 		
 		System.out.println("A new record is recorded successfully!");
+	}
+	
+	private void insertTableMIISch(Statement stmt, String schidIn, String schnameIn, String blspathIn, String patternIn) throws SQLException {
+		
+		String sql = "INSERT MIISchedulerJobs VALUES ('"+schidIn+"','"+schnameIn+"','"+blspathIn+"','"+patternIn+"')";
+		
+		stmt.execute(sql);
+		
+		System.out.println("A new record is recorded successfully!");
+		
 	}
 }
