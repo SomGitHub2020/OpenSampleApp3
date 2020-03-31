@@ -28,6 +28,10 @@ public class MSSQLServerConn {
 	private static final String BLSPath = "B";
 	private static final String Pattern = "X";
 	
+	private static final String Status = "B";
+	private static final String ErrMsg = "X";
+	
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
@@ -36,8 +40,41 @@ public class MSSQLServerConn {
 		msserverCon.dbConn(user, pass);
 		msserverCon.insertNewEmp(ID,FName,LName);
 		msserverCon.insertMIISchData(SchID,SchName,BLSPath,Pattern);
+		msserverCon.insertDummyData(Status,ErrMsg);
 	}
 
+
+	public String insertDummyData(String status2, String errMsg2) {
+
+		String returnMsg = "" ;
+		
+	    try
+	    {
+	    	Connection databaseConnection= null;
+
+	      //Connect to the database
+	      databaseConnection = DriverManager.getConnection(dbURLwithUserPswd);
+	      
+	      Statement stmt = databaseConnection.createStatement();
+ 
+	      insertTableDummy(stmt,status2, errMsg2);
+	      
+	      System.out.println("Closing database connection");
+	    }
+	    catch (SQLException err)
+	    {
+	       System.err.println("Error connecting to the database");
+	       returnMsg = "ERROR";
+	       err.printStackTrace(System.err);
+	       return returnMsg;
+	      // System.exit(0);
+	    }
+	    returnMsg = "SUCCESS";
+	    System.out.println("Program finished");
+	    return returnMsg;
+
+	}
+	
 	public String insertMIISchData(String schid2, String schname2, String blspath2, String pattern2) {
 		String returnMsg = "" ;
 		
@@ -164,4 +201,15 @@ public class MSSQLServerConn {
 		System.out.println("A new record is recorded successfully!");
 		
 	}
+
+	private void insertTableDummy(Statement stmt, String status2, String errMsg2) throws SQLException {
+	
+		String sql = "INSERT DUMMYDATA VALUES ('"+status2+"','"+errMsg2+"')";
+		
+		stmt.execute(sql);
+		
+		System.out.println("A new record is recorded successfully!");
+		
+	}
+	
 }
