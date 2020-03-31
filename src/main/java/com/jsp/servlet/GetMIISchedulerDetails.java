@@ -10,12 +10,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 
 import org.w3c.dom.CharacterData;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
 import mssqlServerConn.MSSQLServerConn;
 
@@ -27,7 +29,7 @@ public class GetMIISchedulerDetails extends HttpServlet {
 	private static final String username = "som_sa";
 	private static final String password = "password@12345";
 	
-	public String outputMsg = null;
+	public String outputMsg = "";
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -51,16 +53,28 @@ public class GetMIISchedulerDetails extends HttpServlet {
         
         String LocalFileURL = "C:\\Users\\SOMSARKAR\\Desktop\\IBM\\Project Work 2018\\Workspaces\\SelfLearningWS\\OSSampleApp3\\src\\main\\resources\\sample.xml";
        
-        try {
+      
 			
 			InputStream in = new FileInputStream(LocalFileURL);
 			
 	        DocumentBuilderFactory dbf =
 	            DocumentBuilderFactory.newInstance();
-	        DocumentBuilder db = dbf.newDocumentBuilder();
+	        DocumentBuilder db = null;
+			try {
+				db = dbf.newDocumentBuilder();
+			} catch (ParserConfigurationException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 	        
 
-	        Document doc = (Document) db.parse(in);
+	        Document doc = null;
+			try {
+				doc = (Document) db.parse(in);
+			} catch (SAXException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 	        NodeList nodes = ((org.w3c.dom.Document) doc).getElementsByTagName("Row");
 	        
 	        // iterate the employees
@@ -91,11 +105,7 @@ public class GetMIISchedulerDetails extends HttpServlet {
 		       System.out.println("MII Scheduler for ID "+ ID +"is inserted: "+returnMsg);
 	        }
 	        
-	        
-	    }
-	    catch (Exception e) {
-	        e.printStackTrace();
-	    }
+
         
 		response.sendRedirect(request.getContextPath() + "/DisplayMIIData.jsp?returnMsg=" + outputMsg);
 	}
