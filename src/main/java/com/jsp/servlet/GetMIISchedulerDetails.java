@@ -26,6 +26,8 @@ public class GetMIISchedulerDetails extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final String username = "som_sa";
 	private static final String password = "password@12345";
+	
+	public String outputMsg = null;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -60,7 +62,7 @@ public class GetMIISchedulerDetails extends HttpServlet {
 
 	        Document doc = (Document) db.parse(in);
 	        NodeList nodes = ((org.w3c.dom.Document) doc).getElementsByTagName("Row");
-
+	        
 	        // iterate the employees
 	        for (int i = 0; i < nodes.getLength(); i++) {
 	           Element element = (Element) nodes.item(i);
@@ -85,6 +87,7 @@ public class GetMIISchedulerDetails extends HttpServlet {
 		      
 		       msserverCon.dbConn("som_sa","password@12345");
 		       String returnMsg = msserverCon.insertMIISchData(ID,Name,FullName,Pattern);
+		       outputMsg = outputMsg + returnMsg;
 		       System.out.println("MII Scheduler for ID "+ ID +"is inserted: "+returnMsg);
 	        }
 	        
@@ -94,7 +97,7 @@ public class GetMIISchedulerDetails extends HttpServlet {
 	        e.printStackTrace();
 	    }
         
-        response.sendRedirect(request.getContextPath() + "/DisplayMIIData.jsp");
+		response.sendRedirect(request.getContextPath() + "/DisplayMIIData.jsp?returnMsg=" + outputMsg);
 	}
 	
 	  public static String getCharacterDataFromElement(Element e) {

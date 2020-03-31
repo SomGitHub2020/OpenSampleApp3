@@ -10,6 +10,13 @@
 </head>
 <body bgcolor="#000000">
 	    
+	 	<div align="center" style="margin-top: 50px;">
+ 
+         <font color="#ffffff"> Hello <b><%= request.getParameter("returnMsg") %></b>! </font>
+         
+    	</div>
+
+    	<br>
 	   	<div align="center" style="margin-top: 50px;">
  
          <font color="#ffffff">  Welcome! Below is list of MII Scheduler Jobs </font>
