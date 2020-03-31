@@ -75,7 +75,8 @@ public class GetMIISchedulerDetails extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-	        NodeList nodes = ((org.w3c.dom.Document) doc).getElementsByTagName("Row");
+	        
+			NodeList nodes = ((org.w3c.dom.Document) doc).getElementsByTagName("Row");
 	        
 	        // iterate the employees
 	        for (int i = 0; i < nodes.getLength(); i++) {
