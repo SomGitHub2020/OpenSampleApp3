@@ -25,6 +25,7 @@ import mssqlServerConn.MSSQLServerConn;
 public class GetMIISchedulerDetails extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final String username = "som_sa";
+	private static final String password = "password@12345";
        
     /**
      * @see HttpServlet#HttpServlet()

@@ -12,7 +12,7 @@
 	    
 	   	<div align="center" style="margin-top: 50px;">
  
-         <font color="#ffffff">  Welcome! </font>
+         <font color="#ffffff">  Welcome! Below is list of MII Scheduler Jobs </font>
  
     	</div>
 
