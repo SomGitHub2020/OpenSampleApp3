@@ -88,13 +88,13 @@ public class GetMIISchedulerDetails extends HttpServlet {
 		       System.out.println("MII Scheduler for ID "+ ID +"is inserted: "+returnMsg);
 	        }
 	        
-	        response.sendRedirect(request.getContextPath() + "/DisplayMIIData.jsp");
+	        
 	    }
 	    catch (Exception e) {
 	        e.printStackTrace();
 	    }
         
-        
+        response.sendRedirect(request.getContextPath() + "/DisplayMIIData.jsp");
 	}
 	
 	  public static String getCharacterDataFromElement(Element e) {
