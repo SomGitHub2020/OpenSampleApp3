@@ -22,6 +22,7 @@ public class MSSQLServerConn {
 	private static final String FName = "A";
 	private static final String LName = "B";
 	
+	
 	private static final String SchID = "X";
 	private static final String SchName = "A";
 	private static final String BLSPath = "B";
