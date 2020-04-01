@@ -12,7 +12,7 @@
 	    
 	 	<div align="center" style="margin-top: 50px;">
  
-         <font color="#ffffff"> Hello <b><%= request.getParameter("returnMsg") %></b>! </font>
+        <!-- <font color="#ffffff"> Hello <b><%= request.getParameter("returnMsg") %></b>! </font> --> 
          
     	</div>
 
@@ -43,8 +43,8 @@
 
 				statement = connection.createStatement();
 				// sql query to retrieve values from the secified table.
-				//String QueryString = "SELECT * from MIISchedulerJobs";
-				String QueryString = "SELECT * from DUMMYDATA";
+				String QueryString = "SELECT * from MIISchedulerJobs";
+				//String QueryString = "SELECT * from DUMMYDATA";
 				rs = statement.executeQuery(QueryString);
 			%>
     			<TABLE cellpadding="15" border="1" style="background-color: #ffffcc;">
@@ -60,7 +60,8 @@
 				<TR>
 				<TD><%=rs.getString(1)%></TD>
 				<TD><%=rs.getString(2)%></TD>
-
+				<TD><%=rs.getString(3)%></TD>
+				<TD><%=rs.getString(4)%></TD>
 				</TR>
 			<% } %>
 			<%
